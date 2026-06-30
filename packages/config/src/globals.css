@@ -214,6 +214,41 @@
   box-shadow: var(--glass-shadow), var(--glass-inset), var(--glass-chrome-rim);
 }
 
+/* Modal dialog — highly transparent frosted surface */
+@utility glass-dialog {
+  background: color-mix(in oklch, var(--glass-surface-fill) 32%, transparent);
+  backdrop-filter: blur(calc(var(--glass-blur) + 12px)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 12px))
+    saturate(var(--glass-saturation));
+  border: 1px solid color-mix(in oklch, var(--glass-border) 55%, transparent);
+  box-shadow:
+    var(--glass-shadow),
+    var(--glass-inset),
+    var(--glass-chrome-rim);
+}
+
+@utility glass-dialog-elevated {
+  background: color-mix(in oklch, var(--glass-surface-fill) 42%, transparent);
+  backdrop-filter: blur(calc(var(--glass-blur) + 8px)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 8px))
+    saturate(var(--glass-saturation));
+  border: 1px solid color-mix(in oklch, var(--glass-border) 50%, transparent);
+  box-shadow:
+    var(--glass-shadow),
+    var(--glass-inset),
+    var(--glass-chrome-rim);
+}
+
+/* Form fields — translucent chrome inputs */
+@utility glass-field {
+  background: color-mix(in oklch, var(--glass-chrome-bg-env) 48%, transparent);
+  color: var(--glass-chrome-fg);
+  backdrop-filter: blur(var(--glass-chrome-blur)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter: blur(var(--glass-chrome-blur)) saturate(var(--glass-saturation));
+  border: 1px solid color-mix(in oklch, var(--glass-chrome-border) 70%, transparent);
+  box-shadow: var(--glass-chrome-inset);
+}
+
 /* Apple Liquid Glass chrome — neutral functional layer above content */
 @utility glass-chrome {
   background: var(--glass-chrome-bg-env);

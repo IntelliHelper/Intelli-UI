@@ -7,8 +7,7 @@ import { cn, focusRing } from "@intelli/utils";
 
 const glassIconButtonVariants = cva(
   [
-    "inline-flex shrink-0 items-center justify-center",
-    "glass-chrome glass-chrome-interactive rounded-full",
+    "inline-flex shrink-0 items-center justify-center rounded-full",
     "transition-[transform,box-shadow,background] duration-[var(--duration-normal)] [transition-timing-function:var(--ease-spring)]",
     "disabled:pointer-events-none disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -16,6 +15,11 @@ const glassIconButtonVariants = cva(
   ],
   {
     variants: {
+      variant: {
+        chrome: "glass-chrome glass-chrome-interactive",
+        ghost: "glass-button-ghost glass-chrome-interactive",
+        destructive: "glass-button-content-destructive glass-chrome-interactive",
+      },
       size: {
         sm: "size-8 [&_svg]:size-3.5",
         default: "size-9 [&_svg]:size-4",
@@ -23,6 +27,7 @@ const glassIconButtonVariants = cva(
       },
     },
     defaultVariants: {
+      variant: "chrome",
       size: "default",
     },
   },
@@ -35,11 +40,12 @@ export interface GlassIconButtonProps
 }
 
 const GlassIconButton = forwardRef<HTMLButtonElement, GlassIconButtonProps>(
-  ({ className, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(glassIconButtonVariants({ size, className }))}
+        data-slot="glass-icon-button"
+        className={cn(glassIconButtonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />

@@ -10,7 +10,10 @@
     "./glass-content-card": "./src/glass-content-card.tsx",
     "./card": "./src/card.tsx",
     "./tabs": "./src/tabs.tsx",
-    "./table": "./src/table.tsx"
+    "./table": "./src/table.tsx",
+    "./dialog": "./src/dialog.tsx",
+    "./input": "./src/input.tsx",
+    "./textarea": "./src/textarea.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -18,6 +21,7 @@
   },
   "dependencies": {
     "@intelli/utils": "workspace:*",
+    "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tabs": "^1.1.12",
     "class-variance-authority": "^0.7.1",

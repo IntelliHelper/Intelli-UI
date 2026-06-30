@@ -59,6 +59,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <div
         ref={ref}
+        data-slot="card"
         data-variant={variant}
         className={cn("group", cardVariants({ variant, animated, className }))}
         style={

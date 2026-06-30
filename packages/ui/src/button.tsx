@@ -91,15 +91,26 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  loading?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, shape, size, asChild = false, ...props }, ref) => {
+  (
+    { className, variant, shape, size, asChild = false, loading, disabled, ...props },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, shape, size, className }))}
+        data-slot="button"
+        data-loading={loading || undefined}
+        className={cn(
+          buttonVariants({ variant, shape, size, className }),
+          loading && "pointer-events-none opacity-70",
+        )}
         ref={ref}
+        disabled={disabled || loading}
+        aria-busy={loading || undefined}
         {...props}
       />
     );

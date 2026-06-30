@@ -9,7 +9,6 @@ const glassBarVariants = cva(
     "flex w-full items-center gap-2",
     "glass-chrome glass-chrome-capsule",
     "px-2",
-    "animate-float-in",
   ],
   {
     variants: {
@@ -18,9 +17,14 @@ const glassBarVariants = cva(
         default: "h-14 gap-2 px-2",
         lg: "h-16 gap-3 px-3",
       },
+      animated: {
+        true: "animate-float-in",
+        false: "",
+      },
     },
     defaultVariants: {
       size: "default",
+      animated: true,
     },
   },
 );
@@ -30,12 +34,13 @@ export interface GlassBarProps
     VariantProps<typeof glassBarVariants> {}
 
 const GlassBar = forwardRef<HTMLDivElement, GlassBarProps>(
-  ({ className, size, children, ...props }, ref) => {
+  ({ className, size, animated, children, ...props }, ref) => {
     return (
       <div
         ref={ref}
         role="toolbar"
-        className={cn(glassBarVariants({ size, className }))}
+        data-slot="glass-bar"
+        className={cn(glassBarVariants({ size, animated, className }))}
         {...props}
       >
         {children}
@@ -45,60 +50,73 @@ const GlassBar = forwardRef<HTMLDivElement, GlassBarProps>(
 );
 GlassBar.displayName = "GlassBar";
 
-function GlassBarMedia({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
-  return (
+export type GlassBarMediaProps = HTMLAttributes<HTMLDivElement>;
+
+const GlassBarMedia = forwardRef<HTMLDivElement, GlassBarMediaProps>(
+  ({ className, ...props }, ref) => (
     <div
+      ref={ref}
+      data-slot="glass-bar-media"
       className={cn(
         "size-10 shrink-0 overflow-hidden rounded-md shadow-sm",
         className,
       )}
       {...props}
     />
-  );
-}
+  ),
+);
 GlassBarMedia.displayName = "GlassBarMedia";
 
-function GlassBarInfo({
-  className,
-  title,
-  subtitle,
-  ...props
-}: HTMLAttributes<HTMLDivElement> & {
+export interface GlassBarInfoProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
   subtitle?: string;
-}) {
-  return (
+  titleClassName?: string;
+  subtitleClassName?: string;
+}
+
+const GlassBarInfo = forwardRef<HTMLDivElement, GlassBarInfoProps>(
+  ({ className, title, subtitle, titleClassName, subtitleClassName, ...props }, ref) => (
     <div
+      ref={ref}
+      data-slot="glass-bar-info"
       className={cn("min-w-0 flex-1 truncate text-left", className)}
       {...props}
     >
-      <p className="truncate text-sm font-semibold leading-tight glass-chrome-text">
+      <p
+        className={cn(
+          "truncate text-sm font-semibold leading-tight glass-chrome-text",
+          titleClassName,
+        )}
+      >
         {title}
       </p>
       {subtitle && (
-        <p className="truncate text-xs leading-tight glass-chrome-text-muted">
+        <p
+          className={cn(
+            "truncate text-xs leading-tight glass-chrome-text-muted",
+            subtitleClassName,
+          )}
+        >
           {subtitle}
         </p>
       )}
     </div>
-  );
-}
+  ),
+);
 GlassBarInfo.displayName = "GlassBarInfo";
 
-function GlassBarControls({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
-  return (
+export type GlassBarControlsProps = HTMLAttributes<HTMLDivElement>;
+
+const GlassBarControls = forwardRef<HTMLDivElement, GlassBarControlsProps>(
+  ({ className, ...props }, ref) => (
     <div
+      ref={ref}
+      data-slot="glass-bar-controls"
       className={cn("flex shrink-0 items-center gap-0.5", className)}
       {...props}
     />
-  );
-}
+  ),
+);
 GlassBarControls.displayName = "GlassBarControls";
 
 export {
