@@ -1,16 +1,30 @@
 {
   "name": "@intelli/cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "type": "module",
   "bin": {
     "intelli-ui": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
-    "check-types": "tsc --noEmit"
+    "prebuild": "node scripts/bundle-registry.mjs",
+    "build": "tsc && mkdir -p dist/registry && cp src/registry/bundled.json dist/registry/bundled.json",
+    "check-types": "pnpm prebuild && tsc --noEmit",
+    "dev": "pnpm prebuild && tsc --watch"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.5.3",
+    "commander": "^14.0.0",
+    "diff": "^8.0.2",
+    "picocolors": "^1.1.1",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+
     "@types/node": "^22.15.3",
     "typescript": "5.9.2"
   }

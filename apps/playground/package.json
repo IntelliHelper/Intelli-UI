@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "prebuild": "node ../../scripts/bundle-registry.mjs --target=public",
     "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
