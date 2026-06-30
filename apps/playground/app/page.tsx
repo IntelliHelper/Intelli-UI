@@ -3,6 +3,9 @@ import { Button } from "@intelli/ui";
 import { ButtonGlassDemo } from "../components/button-glass-demo";
 import { CliGettingStarted } from "../components/cli-getting-started";
 import { DataComponentsDemo } from "../components/data-components-demo";
+import { DialogDemo } from "../components/dialog-demo";
+import { CustomizationDemo } from "../components/customization-demo";
+import { FormComponentsDemo } from "../components/form-components-demo";
 import { LiquidGlassDemo } from "../components/liquid-glass-demo";
 import { ThemeSwitcher } from "../components/theme-switcher";
 import { ThemeToggle } from "../components/theme-toggle";
@@ -89,6 +92,27 @@ export default function Home() {
           className="animate-fade-in"
         >
           <LiquidGlassDemo />
+        </GlassSection>
+
+        <GlassSection
+          title="Customization"
+          description="Every component supports variants, className slots, data-slot hooks, and exported CVA helpers"
+        >
+          <CustomizationDemo />
+        </GlassSection>
+
+        <GlassSection
+          title="Input & Textarea"
+          description="Translucent chrome form fields that blend with glass surfaces"
+        >
+          <FormComponentsDemo />
+        </GlassSection>
+
+        <GlassSection
+          title="Dialog"
+          description="Highly transparent frosted modal with glass-rise content and chrome close control"
+        >
+          <DialogDemo />
         </GlassSection>
 
         <GlassSection

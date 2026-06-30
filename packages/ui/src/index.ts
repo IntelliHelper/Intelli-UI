@@ -6,6 +6,9 @@ export {
   GlassBarControls,
   glassBarVariants,
   type GlassBarProps,
+  type GlassBarMediaProps,
+  type GlassBarInfoProps,
+  type GlassBarControlsProps,
 } from "./glass-bar";
 export {
   GlassIconButton,
@@ -15,6 +18,7 @@ export {
 export {
   GlassContentCard,
   GlassContentPanel,
+  glassContentCardVariants,
   type GlassContentCardProps,
   type GlassContentPanelProps,
 } from "./glass-content-card";
@@ -34,7 +38,10 @@ export {
   TabsTrigger,
   TabsContent,
   tabsListVariants,
+  tabsTriggerVariants,
   type TabsListProps,
+  type TabsTriggerProps,
+  type TabsContentProps,
 } from "./tabs";
 export {
   Table,
@@ -46,6 +53,39 @@ export {
   TableCell,
   TableCaption,
   tableContainerVariants,
+  tableDensityVariants,
   type TableProps,
   type TableBodyProps,
 } from "./table";
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  dialogContentVariants,
+  dialogOverlayVariants,
+  type DialogContentProps,
+  type DialogOverlayProps,
+  type DialogOverlayBlur,
+  type DialogOverlayDim,
+  type DialogHeaderProps,
+  type DialogFooterProps,
+  type DialogTitleProps,
+  type DialogDescriptionProps,
+} from "./dialog";
+export { Input, fieldVariants, type InputProps } from "./input";
+export {
+  Textarea,
+  textareaVariants,
+  type TextareaProps,
+} from "./textarea";
+export {
+  type FieldVariantProps,
+  type TextareaVariantProps,
+} from "./field-variants";

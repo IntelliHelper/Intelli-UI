@@ -16,12 +16,17 @@ import { cn, focusRing } from "@intelli/utils";
 const Tabs = TabsPrimitive.Root;
 
 const tabsListVariants = cva(
-  [
-    "relative inline-flex items-center justify-center gap-1 p-1",
-    "glass-chrome glass-chrome-capsule",
-  ],
+  "relative inline-flex items-center justify-center gap-1 p-1",
   {
     variants: {
+      variant: {
+        chrome: "glass-chrome glass-chrome-capsule",
+        plain: [
+          "rounded-2xl border border-[var(--glass-chrome-border)]",
+          "bg-[color-mix(in_oklch,var(--glass-surface-fill)_25%,transparent)]",
+          "backdrop-blur-[var(--glass-chrome-blur)]",
+        ],
+      },
       size: {
         sm: "h-9",
         default: "h-10",
@@ -29,6 +34,7 @@ const tabsListVariants = cva(
       },
     },
     defaultVariants: {
+      variant: "chrome",
       size: "default",
     },
   },
@@ -36,12 +42,14 @@ const tabsListVariants = cva(
 
 export interface TabsListProps
   extends ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
-    VariantProps<typeof tabsListVariants> {}
+    VariantProps<typeof tabsListVariants> {
+  indicatorClassName?: string;
+}
 
 const TabsList = forwardRef<
   ElementRef<typeof TabsPrimitive.List>,
   TabsListProps
->(({ className, size, children, ...props }, ref) => {
+>(({ className, variant, size, indicatorClassName, children, ...props }, ref) => {
   const listRef = useRef<HTMLDivElement | null>(null);
   const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
 
@@ -89,16 +97,21 @@ const TabsList = forwardRef<
         if (typeof ref === "function") ref(node);
         else if (ref) ref.current = node;
       }}
-      className={cn(tabsListVariants({ size, className }))}
+      data-slot="tabs-list"
+      className={cn(tabsListVariants({ variant, size, className }))}
       {...props}
     >
       <span
         aria-hidden="true"
+        data-slot="tabs-indicator"
         className={cn(
           "pointer-events-none absolute inset-y-1 left-0 rounded-full",
-          "glass-chrome-indicator",
+          variant === "plain"
+            ? "bg-[color-mix(in_oklch,var(--glass-chrome-bg-env)_70%,transparent)] border border-[var(--glass-chrome-border)]"
+            : "glass-chrome-indicator",
           "transition-[transform,width,opacity]",
           "duration-[var(--duration-slow)] [transition-timing-function:var(--ease-spring)]",
+          indicatorClassName,
         )}
         style={{
           transform: `translateX(${indicator.left}px)`,
@@ -112,36 +125,61 @@ const TabsList = forwardRef<
 });
 TabsList.displayName = TabsPrimitive.List.displayName;
 
+const tabsTriggerVariants = cva(
+  [
+    "relative z-10 inline-flex items-center justify-center whitespace-nowrap rounded-full font-medium glass-chrome-text-muted",
+    "transition-[color,font-weight,transform] duration-[var(--duration-normal)] [transition-timing-function:var(--ease-default)]",
+    "disabled:pointer-events-none disabled:opacity-50",
+    "data-[state=active]:glass-chrome-text data-[state=active]:font-semibold",
+    "data-[state=active]:scale-[1.02]",
+    focusRing,
+  ],
+  {
+    variants: {
+      size: {
+        sm: "px-3 py-1 text-xs",
+        default: "px-4 py-1.5 text-sm",
+        lg: "px-5 py-2 text-base",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+    },
+  },
+);
+
+export interface TabsTriggerProps
+  extends ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>,
+    VariantProps<typeof tabsTriggerVariants> {}
+
 const TabsTrigger = forwardRef<
   ElementRef<typeof TabsPrimitive.Trigger>,
-  ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
+  TabsTriggerProps
+>(({ className, size, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
-    className={cn(
-      "relative z-10 inline-flex items-center justify-center whitespace-nowrap rounded-full px-4 py-1.5",
-      "text-sm font-medium glass-chrome-text-muted",
-      "transition-[color,font-weight,transform] duration-[var(--duration-normal)] [transition-timing-function:var(--ease-default)]",
-      "disabled:pointer-events-none disabled:opacity-50",
-      "data-[state=active]:glass-chrome-text data-[state=active]:font-semibold",
-      "data-[state=active]:scale-[1.02]",
-      focusRing,
-      className,
-    )}
+    data-slot="tabs-trigger"
+    className={cn(tabsTriggerVariants({ size, className }))}
     {...props}
   />
 ));
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
+export interface TabsContentProps
+  extends ComponentPropsWithoutRef<typeof TabsPrimitive.Content> {
+  animated?: boolean;
+}
+
 const TabsContent = forwardRef<
   ElementRef<typeof TabsPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+  TabsContentProps
+>(({ className, animated = true, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
+    data-slot="tabs-content"
     className={cn(
       "mt-4 focus-visible:outline-none",
-      "animate-tab-content",
+      animated && "animate-tab-content",
       className,
     )}
     {...props}
@@ -149,4 +187,11 @@ const TabsContent = forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants };
+export {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  tabsListVariants,
+  tabsTriggerVariants,
+};

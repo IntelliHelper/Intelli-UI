@@ -41,7 +41,8 @@
         }
       ],
       "meta": {
-        "sizes": ["sm", "default", "lg"]
+        "sizes": ["sm", "default", "lg"],
+        "slots": ["titleClassName", "subtitleClassName"]
       }
     },
     {
@@ -62,6 +63,7 @@
         }
       ],
       "meta": {
+        "variants": ["chrome", "ghost", "destructive"],
         "sizes": ["sm", "default", "lg"]
       }
     },
@@ -77,7 +79,11 @@
           "type": "registry:ui",
           "target": "components/ui/glass-content-card.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "variants": ["content", "outline"],
+        "slots": ["panelClassName"]
+      }
     },
     {
       "name": "card",
@@ -115,7 +121,84 @@
         }
       ],
       "meta": {
-        "sizes": ["sm", "default", "lg"]
+        "variants": ["chrome", "plain"],
+        "sizes": ["sm", "default", "lg"],
+        "slots": ["indicatorClassName"]
+      }
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Translucent glass text input with chrome and outline variants.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/field-variants.ts",
+          "type": "registry:ui",
+          "target": "components/ui/field-variants.ts"
+        },
+        {
+          "path": "packages/ui/src/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["chrome", "outline"],
+        "sizes": ["sm", "default", "lg"],
+        "states": ["default", "error", "success"]
+      }
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Translucent glass multiline input with chrome and outline variants.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/field-variants.ts",
+          "type": "registry:ui",
+          "target": "components/ui/field-variants.ts"
+        },
+        {
+          "path": "packages/ui/src/textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["chrome", "outline"],
+        "sizes": ["sm", "default", "lg"],
+        "states": ["default", "error", "success"]
+      }
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Highly transparent glass modal with frosted overlay, rise-in animation, and chrome close control.",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["chrome", "elevated"],
+        "sizes": ["sm", "default", "lg", "xl", "full"],
+        "overlayBlur": ["none", "sm", "default", "lg", "xl", "heavy"],
+        "overlayDim": ["none", "light", "default", "heavy"],
+        "slots": ["overlayClassName", "closeClassName", "closeIcon", "closeLabel"]
       }
     },
     {
@@ -133,7 +216,9 @@
         }
       ],
       "meta": {
-        "variants": ["chrome", "elevated", "plain"]
+        "variants": ["chrome", "elevated", "plain"],
+        "density": ["compact", "default", "comfortable"],
+        "slots": ["containerClassName"]
       }
     },
     {
