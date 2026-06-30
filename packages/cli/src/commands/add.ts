@@ -6,8 +6,13 @@ import {
   installDependencies,
 } from "../lib/installer.js";
 import { logger } from "../lib/logger.js";
+import { readManifest } from "../lib/manifest.js";
 import { resolvePaths } from "../lib/paths.js";
-import { confirmOverwrite, promptModifiedFile } from "../lib/prompts.js";
+import {
+  confirmOverwrite,
+  promptModifiedFile,
+  promptSelectComponents,
+} from "../lib/prompts.js";
 import {
   fetchRegistry,
   fetchRegistryItem,
@@ -28,13 +33,38 @@ export async function runAdd(options: AddOptions): Promise<void> {
   const paths = resolvePaths(cwd, config);
   const registry = await fetchRegistry(config.registry);
 
-  if (components.length === 0) {
-    logger.error("Please specify at least one component. Example: npx intelli-ui add button");
-    logger.info("Run `npx intelli-ui list` to see available components.");
-    process.exit(1);
-  }
+  let targets = components;
 
-  const targets = components;
+  if (targets.length === 0) {
+    if (!process.stdin.isTTY) {
+      logger.error(
+        "Please specify at least one component. Example: npx @intelli/cli add button",
+      );
+      logger.info("Run `npx @intelli/cli list` to see available components.");
+      process.exit(1);
+    }
+
+    const manifest = readManifest(cwd);
+    const available = registry.items
+      .filter((item) => item.type === "registry:ui")
+      .map((item) => ({
+        name: item.name,
+        description: item.description ?? item.title,
+        installed: Boolean(manifest.components[item.name]),
+      }));
+
+    if (available.length === 0) {
+      logger.error("No components found in registry.");
+      process.exit(1);
+    }
+
+    targets = await promptSelectComponents(available);
+
+    if (targets.length === 0) {
+      logger.warn("No components selected.");
+      return;
+    }
+  }
 
   const itemsToInstall = new Map<string, RegistryItem>();
 

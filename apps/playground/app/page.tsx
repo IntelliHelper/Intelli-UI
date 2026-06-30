@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Button } from "@intelli/ui";
 import { ButtonGlassDemo } from "../components/button-glass-demo";
+import { CliGettingStarted } from "../components/cli-getting-started";
 import { DataComponentsDemo } from "../components/data-components-demo";
 import { LiquidGlassDemo } from "../components/liquid-glass-demo";
 import { ThemeSwitcher } from "../components/theme-switcher";
@@ -75,6 +76,13 @@ export default function Home() {
       </header>
 
       <main className="mx-auto max-w-5xl space-y-6 px-6 pb-16">
+        <GlassSection
+          title="CLI"
+          description="Add Liquid Glass components to any Next.js + Tailwind project"
+        >
+          <CliGettingStarted />
+        </GlassSection>
+
         <GlassSection
           title="Liquid Glass"
           description="Apple-style chrome layer floating over expressive content — toggle light/dark to see adaptive glass"

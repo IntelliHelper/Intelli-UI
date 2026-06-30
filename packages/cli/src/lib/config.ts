@@ -42,7 +42,7 @@ export function readConfig(cwd: string): IntelliConfig {
   const configPath = getConfigPath(cwd);
   if (!existsSync(configPath)) {
     throw new Error(
-      `Missing ${CONFIG_FILE}. Run \`npx intelli-ui init\` to create one.`,
+      `Missing ${CONFIG_FILE}. Run \`npx @intelli/cli init\` to create one.`,
     );
   }
 

@@ -1,4 +1,4 @@
-import { confirm, select } from "@inquirer/prompts";
+import { checkbox, confirm, select } from "@inquirer/prompts";
 import pc from "picocolors";
 import type { FileUpdatePlan } from "../types.js";
 import { formatDiff } from "./diff.js";
@@ -45,6 +45,25 @@ export async function promptModifiedFile(
         value: "abort" as const,
       },
     ],
+  });
+}
+
+export async function promptSelectComponents(
+  items: Array<{ name: string; description?: string; installed?: boolean }>,
+): Promise<string[]> {
+  const choices = items.map((item) => ({
+    name: item.installed
+      ? `${item.name} (installed)`
+      : `${item.name}${item.description ? ` — ${item.description}` : ""}`,
+    value: item.name,
+    disabled: item.installed ? "Already installed" : false,
+  }));
+
+  return checkbox({
+    message: "Which components would you like to add?",
+    choices,
+    pageSize: 12,
+    required: true,
   });
 }
 

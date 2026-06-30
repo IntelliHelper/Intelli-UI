@@ -38,7 +38,7 @@ export async function runUpdate(options: UpdateOptions): Promise<void> {
 
   const installedNames = Object.keys(manifest.components);
   if (installedNames.length === 0) {
-    logger.warn("No installed components found. Use `npx intelli-ui add` first.");
+    logger.warn("No installed components found. Use `npx @intelli/cli add` first.");
     return;
   }
 

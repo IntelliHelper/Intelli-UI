@@ -12,7 +12,7 @@ export async function runList(options: ListOptions): Promise<void> {
   const { cwd, installed } = options;
 
   if (installed && !configExists(cwd)) {
-    logger.error("No components.json found. Run `npx intelli-ui init` first.");
+    logger.error("No components.json found. Run `npx @intelli/cli init` first.");
     process.exit(1);
   }
 

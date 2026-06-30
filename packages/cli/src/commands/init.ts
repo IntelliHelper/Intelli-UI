@@ -91,5 +91,5 @@ export async function runInit(options: InitOptions): Promise<void> {
 
   writeConfig(cwd, config);
   logger.success("Created components.json");
-  logger.info("Add components with: npx intelli-ui add <component>");
+  logger.info("Add components with: npx @intelli/cli add <component>");
 }

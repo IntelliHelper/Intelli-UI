@@ -1,19 +1,39 @@
 {
   "name": "@intelli/cli",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.1.0",
+  "description": "Add and update Intelli UI Liquid Glass components in your project",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IntelliHelper/Intelli-UI.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://ui.intellihelper.in",
+  "keywords": [
+    "intelli-ui",
+    "cli",
+    "components",
+    "react",
+    "tailwind",
+    "liquid-glass",
+    "shadcn"
+  ],
   "bin": {
-    "intelli-ui": "./dist/index.js"
+    "intelli-ui": "dist/index.js"
   },
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "node scripts/bundle-registry.mjs",
     "build": "tsc && mkdir -p dist/registry && cp src/registry/bundled.json dist/registry/bundled.json",
     "check-types": "pnpm prebuild && tsc --noEmit",
-    "dev": "pnpm prebuild && tsc --watch"
+    "dev": "pnpm prebuild && tsc --watch",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@inquirer/prompts": "^7.5.3",
@@ -24,8 +44,10 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-
     "@types/node": "^22.15.3",
     "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
