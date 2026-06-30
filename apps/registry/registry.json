@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "intelli-ui",
-  "homepage": "https://intelli-ui.dev",
+  "homepage": "https://ui.intellihelper.in",
   "items": [
     {
       "name": "button",

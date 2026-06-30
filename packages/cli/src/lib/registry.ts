@@ -11,10 +11,6 @@ export function getRegistryUrl(registryUrl?: string): string {
 export async function fetchRegistry(registryUrl?: string): Promise<Registry> {
   const url = getRegistryUrl(registryUrl);
 
-  if (url === DEFAULT_REGISTRY_URL || url.endsWith("/r")) {
-    return bundled;
-  }
-
   try {
     const response = await fetch(`${url}/registry.json`);
     if (!response.ok) {
@@ -37,9 +33,6 @@ export async function fetchRegistryItem(
   }
 
   const url = getRegistryUrl(registryUrl);
-  if (url === DEFAULT_REGISTRY_URL || url.endsWith("/r")) {
-    return item;
-  }
 
   try {
     const response = await fetch(`${url}/${name}.json`);

@@ -28,7 +28,7 @@ const configSchema = z.object({
 });
 
 export const CONFIG_FILE = "components.json";
-export const DEFAULT_REGISTRY_URL = "https://intelli-ui.dev/r";
+export const DEFAULT_REGISTRY_URL = "https://ui.intellihelper.in/r";
 
 export function getConfigPath(cwd: string): string {
   return join(cwd, CONFIG_FILE);
