@@ -202,6 +202,116 @@
       }
     },
     {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Glass chrome accordion with animated expand/collapse and rotating chevron.",
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/accordion.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/accordion.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["chrome", "outline"],
+        "sizes": ["sm", "default", "lg"]
+      }
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Frosted glass range slider with chrome track and spring-animated thumb.",
+      "dependencies": [
+        "@radix-ui/react-slider",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slider.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["chrome", "outline"],
+        "sizes": ["sm", "default", "lg"]
+      }
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Frosted glass toggle switch with spring-animated thumb and chrome track fill.",
+      "dependencies": [
+        "@radix-ui/react-switch",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switch.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["chrome", "outline"],
+        "sizes": ["sm", "default", "lg"]
+      }
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Glass chrome checkbox with spring-animated check and indeterminate states.",
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["chrome", "outline"],
+        "sizes": ["sm", "default", "lg"]
+      }
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Glass pill badges with scale-in mount animation and optional pulse.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "packages/ui/src/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ],
+      "meta": {
+        "variants": ["default", "secondary", "outline", "destructive", "chrome", "success"],
+        "sizes": ["sm", "default", "lg"]
+      }
+    },
+    {
       "name": "table",
       "type": "registry:ui",
       "title": "Table",

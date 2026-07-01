@@ -5,13 +5,17 @@ import { CliGettingStarted } from "../components/cli-getting-started";
 import { DataComponentsDemo } from "../components/data-components-demo";
 import { DialogDemo } from "../components/dialog-demo";
 import { CustomizationDemo } from "../components/customization-demo";
+import { AccordionSliderDemo } from "../components/accordion-slider-demo";
 import { FormComponentsDemo } from "../components/form-components-demo";
+import { ToggleComponentsDemo } from "../components/toggle-components-demo";
 import { LiquidGlassDemo } from "../components/liquid-glass-demo";
 import { ThemeSwitcher } from "../components/theme-switcher";
 import { ThemeToggle } from "../components/theme-toggle";
 
 const variants = [
   "default",
+  "glass",
+  "primary",
   "destructive",
   "outline",
   "secondary",
@@ -109,6 +113,20 @@ export default function Home() {
         </GlassSection>
 
         <GlassSection
+          title="Switch, Checkbox & Badge"
+          description="Frosted toggle controls with spring thumb slide, animated check marks, and scale-in badges"
+        >
+          <ToggleComponentsDemo />
+        </GlassSection>
+
+        <GlassSection
+          title="Accordion & Slider"
+          description="Expandable chrome panels and frosted range controls with spring-animated thumbs"
+        >
+          <AccordionSliderDemo />
+        </GlassSection>
+
+        <GlassSection
           title="Dialog"
           description="Highly transparent frosted modal with glass-rise content and chrome close control"
         >
@@ -131,7 +149,7 @@ export default function Home() {
 
         <GlassSection
           title="Variants"
-          description="Chrome layer (outline, secondary, ghost) + content layer (default, destructive) on glass"
+          description="Glass UI (default, glass) + chrome layer (outline, secondary, ghost) + content layer (primary, destructive)"
         >
           <ButtonGlassDemo />
           <div className="mt-4 flex flex-wrap gap-3">

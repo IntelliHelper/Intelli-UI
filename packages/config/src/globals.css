@@ -65,6 +65,11 @@
     0 2px 8px color-mix(in oklch, black 8%, transparent),
     inset 0 1px 0 color-mix(in oklch, white 94%, transparent),
     var(--glass-chrome-rim);
+  /* Glass UI button — translucent frosted, high-contrast text */
+  --glass-button-ui-bg: color-mix(in oklch, white 44%, transparent);
+  --glass-button-ui-bg-hover: color-mix(in oklch, white 58%, transparent);
+  --glass-button-ui-fg: oklch(0.14 0 0);
+  --glass-button-ui-border: color-mix(in oklch, oklch(0.13 0 0) 18%, transparent);
 }
 
 :root.dark {
@@ -90,6 +95,11 @@
   );
   --glass-chrome-indicator-border: color-mix(in oklch, white 12%, transparent);
   --glass-chrome-indicator-shadow: var(--glass-chrome-inset), var(--glass-chrome-rim);
+  /* Glass UI button — translucent frosted, high-contrast text */
+  --glass-button-ui-bg: color-mix(in oklch, oklch(0.34 0.02 270) 46%, transparent);
+  --glass-button-ui-bg-hover: color-mix(in oklch, oklch(0.38 0.02 270) 58%, transparent);
+  --glass-button-ui-fg: oklch(0.97 0 0);
+  --glass-button-ui-border: color-mix(in oklch, white 22%, transparent);
 }
 
 /* Apple Liquid Glass: blur + saturation + specular edge, background set per variant */
@@ -372,6 +382,20 @@
     backdrop-filter: blur(var(--glass-chrome-blur)) saturate(var(--glass-saturation));
     -webkit-backdrop-filter: blur(var(--glass-chrome-blur)) saturate(var(--glass-saturation));
     box-shadow: var(--glass-chrome-shadow), var(--glass-chrome-inset), var(--glass-chrome-rim);
+  }
+}
+
+/* Glass UI button — rounded frosted control, neutral (not theme-saturated) */
+@utility glass-button-glass {
+  background: var(--glass-button-ui-bg);
+  color: var(--glass-button-ui-fg);
+  border: 1px solid var(--glass-button-ui-border);
+  backdrop-filter: blur(var(--glass-chrome-blur)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter: blur(var(--glass-chrome-blur)) saturate(var(--glass-saturation));
+  box-shadow: var(--glass-chrome-shadow), var(--glass-chrome-inset), var(--glass-chrome-rim);
+
+  &:hover {
+    background: var(--glass-button-ui-bg-hover);
   }
 }
 

@@ -16,8 +16,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        /* Glass UI — default frosted control (neutral, not theme-saturated) */
+        default: ["glass-button-glass glass-chrome-interactive"],
         /* Content layer — saturated primary glass CTA */
-        default: [
+        primary: [
           "glass-button-content glass-shimmer-hover glass-chrome-interactive",
           "hover:brightness-105",
         ],
@@ -32,6 +34,8 @@ const buttonVariants = cva(
         secondary: ["glass-button-chrome-subtle glass-chrome-interactive"],
         /* Chrome layer — reveals glass on hover */
         ghost: ["glass-button-ghost glass-chrome-interactive"],
+        /* Glass UI — frosted translucent, mode-adaptive text (not theme-saturated) */
+        glass: ["glass-button-glass glass-chrome-interactive"],
         /* Material text link — no glass chrome */
         link: [
           "text-primary font-medium [text-shadow:none]",
@@ -73,7 +77,7 @@ const buttonVariants = cva(
         className: "px-10",
       },
       {
-        variant: ["outline", "secondary", "ghost"],
+        variant: ["outline", "secondary", "ghost", "glass"],
         size: "icon",
         shape: "pill",
         className: "rounded-full",

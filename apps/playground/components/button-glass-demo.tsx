@@ -2,6 +2,8 @@ import { Button } from "@intelli/ui";
 
 const variants = [
   "default",
+  "glass",
+  "primary",
   "destructive",
   "outline",
   "secondary",
@@ -19,8 +21,8 @@ export function ButtonGlassDemo() {
       }}
     >
       <p className="mb-4 text-sm font-medium content-text-muted">
-        Buttons on expressive content — chrome variants stay neutral, filled
-        variants use saturated glass
+        Default & glass stay neutral frosted — primary/destructive use saturated
+        theme glass on expressive content
       </p>
       <div className="flex flex-wrap gap-3">
         {variants.map((variant) => (

@@ -13,7 +13,12 @@
     "./table": "./src/table.tsx",
     "./dialog": "./src/dialog.tsx",
     "./input": "./src/input.tsx",
-    "./textarea": "./src/textarea.tsx"
+    "./textarea": "./src/textarea.tsx",
+    "./accordion": "./src/accordion.tsx",
+    "./slider": "./src/slider.tsx",
+    "./switch": "./src/switch.tsx",
+    "./checkbox": "./src/checkbox.tsx",
+    "./badge": "./src/badge.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -21,7 +26,11 @@
   },
   "dependencies": {
     "@intelli/utils": "workspace:*",
+    "@radix-ui/react-accordion": "^1.2.11",
+    "@radix-ui/react-checkbox": "^1.3.2",
     "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-slider": "^1.3.5",
+    "@radix-ui/react-switch": "^1.2.5",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tabs": "^1.1.12",
     "class-variance-authority": "^0.7.1",

@@ -76,6 +76,24 @@
   }
 }
 
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
 @keyframes tab-content-in {
   from {
     opacity: 0;
@@ -129,5 +147,28 @@
   }
   66% {
     transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes checkbox-check {
+  from {
+    opacity: 0;
+    transform: scale(0.45) rotate(-14deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(1.04);
   }
 }

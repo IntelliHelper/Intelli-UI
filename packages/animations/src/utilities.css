@@ -33,12 +33,28 @@
   animation: float-in var(--duration-enter) var(--ease-default) forwards;
 }
 
+@utility animate-accordion-down {
+  animation: accordion-down var(--duration-normal) var(--ease-default) forwards;
+}
+
+@utility animate-accordion-up {
+  animation: accordion-up var(--duration-normal) var(--ease-default) forwards;
+}
+
 @utility animate-tab-content {
   animation: tab-content-in var(--duration-slow) var(--ease-default) forwards;
 }
 
 @utility animate-row-fade-in {
   animation: row-fade-in var(--duration-slow) var(--ease-default) backwards;
+}
+
+@utility animate-checkbox-check {
+  animation: checkbox-check var(--duration-normal) var(--ease-spring) forwards;
+}
+
+@utility animate-badge-pulse {
+  animation: badge-pulse 2s var(--ease-default) infinite;
 }
 
 @utility animate-content-glow {
@@ -169,8 +185,12 @@
   .animate-glass-rise,
   .animate-scale-in,
   .animate-float-in,
+  .animate-accordion-down,
+  .animate-accordion-up,
   .animate-tab-content,
   .animate-row-fade-in,
+  .animate-checkbox-check,
+  .animate-badge-pulse,
   .animate-content-glow,
   .animate-mesh-drift,
   .glass-specular-on-mount::after,
@@ -187,5 +207,16 @@
 
   .glass-link-underline::after {
     transform: scaleX(1) !important;
+  }
+
+  .group\/slider[data-dragging] [data-slot="slider-thumb"],
+  .group\/slider[data-dragging] [data-slot="slider-thumb-glass"],
+  .group\/slider[data-dragging] [data-slot="slider-track"],
+  .group\/slider[data-dragging] [data-slot="slider-range"],
+  [data-slot="switch"],
+  [data-slot="switch-thumb"],
+  [data-slot="switch-thumb-glass"],
+  [data-slot="checkbox"] {
+    transition: none !important;
   }
 }

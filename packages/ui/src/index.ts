@@ -89,3 +89,37 @@ export {
   type FieldVariantProps,
   type TextareaVariantProps,
 } from "./field-variants";
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  accordionVariants,
+  accordionItemVariants,
+  accordionTriggerVariants,
+  type AccordionTriggerProps,
+  type AccordionContentProps,
+} from "./accordion";
+export {
+  Slider,
+  sliderVariants,
+  sliderTrackVariants,
+  sliderRangeVariants,
+  sliderThumbVariants,
+  sliderThumbGlassVariants,
+  type SliderProps,
+} from "./slider";
+export {
+  Switch,
+  switchVariants,
+  switchThumbVariants,
+  switchThumbGlassVariants,
+  type SwitchProps,
+} from "./switch";
+export {
+  Checkbox,
+  checkboxVariants,
+  checkboxIndicatorVariants,
+  type CheckboxProps,
+} from "./checkbox";
+export { Badge, badgeVariants, type BadgeProps } from "./badge";
